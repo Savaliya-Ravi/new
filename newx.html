@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>shikhva</title>
+    <style>
+        .container,
+        .cont2 {
+            display: flex;
+            align-items: center;
+            margin: 10px;
+            justify-content: center;
+        }
+
+        .container {
+            flex-direction: column;
+        }
+
+        .box1,
+        .box2,
+        .box3 {
+            padding: 19px;
+            border: 2px solid red;
+            margin: 10px;
+            font-size: 40px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>GUESS THE NUMBER</h1>
+        <p>ENTER THE NUMBER OF YOUR GUESS</p>
+        <input type="number" id="guess" name="guess">
+        <input type="button" value="TRY!!" onclick="result()">
+    </div>
+    <div class="cont2">
+        <div class="box1" id="number">
+            Guessed The Number
+        </div>
+        <div class="box2" id="dis">
+            Turn Left 10
+        </div>
+        <div class="box3" id="display">
+            (: START :)
+        </div>
+    </div>
+    <script>
+    var x = document.getElementById("guess").value;
+    var turn = 10;
+    function result(){
+    var y = Math.floor(Math.random() * 100 + 1);
+    if(x>y){
+        document.getElementById('display').innerHTML = "OHHH :( TRY Smaller";
+        turn--;
+        document.getElementById('dis').innerHTML = "Turn Left " +turn; 
+    }
+    else if(x<y){
+        document.getElementById('display').innerHTML = "OHHH :( TRY Larger";
+        turn--;
+        document.getElementById('dis').innerHTML = "Turn Left " +turn;
+    }
+    else{
+        document.getElementById('display').innerHTML = "YOU WON :)";
+        document.getElementById('dis').innerHTML = "Turn Left " +turn; 
+    }
+
+    document.getElementById('number').innerHTML = "Your Guessed Number Is" + x; 
+}
+    </script>
+</body>
+
+</html>
