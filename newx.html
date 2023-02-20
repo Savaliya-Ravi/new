@@ -8,7 +8,7 @@
     <title>GAME HE BHAI</title>
     <style>
         .container,
-        .cont2 ,
+        .cont2,
         #cont3 {
             display: flex;
             align-items: center;
@@ -17,10 +17,10 @@
         }
 
         .container {
-          flex-direction: column;
+            flex-direction: column;
         }
-       
-        #cont3{
+
+        #cont3 {
             font-size: 40px;
         }
 
@@ -33,7 +33,8 @@
             font-size: 40px;
             font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
         }
-        input{
+
+        input {
             margin: 12px;
             padding: 7px;
         }
@@ -44,66 +45,67 @@
 
 <body>
     <form action="#" id="fm1">
-    <div class="container">
-        <h1>GUESS THE NUMBER</h1>
-        <label for="guess"><p>ENTER THE NUMBER OF YOUR GUESS</p></label>
-        <input type="number" id="guess" name="guess">
-        <div class="b1"><input type="button" value="TRY!!" onclick="result()">
-        <input type="reset" value="RESET" ></div>
-        
-    </div>
-    <div class="cont2">
-        <div class="box1" id="number">
-            Guess The Number
-            <span id="spn"></span>
+        <div class="container">
+            <h1>GUESS THE NUMBER</h1>
+            <label for="guess">
+                <p>ENTER THE NUMBER OF YOUR GUESS</p>
+            </label>
+            <input type="number" id="guess" name="guess">
+            <div class="b1"><input type="button"  value="TRY!!" onclick="result()">
+                <input type="button" value="RESET" onClick="location.reload(true)">
+            </div>
+
         </div>
-        <div class="box2" id="dis">
-            Turn Left 10
+        <div class="cont2">
+            <div class="box1" id="number">
+                Guess The Number
+                <span id="spn"></span>
+            </div>
+            <div class="box2" id="dis">
+                Turn Left 10
+            </div>
+            <div class="box3" id="display">
+                (: START :)
+            </div>
         </div>
-        <div class="box3" id="display">
-            (: START :)
-        </div>
-    </div>
-    <div id="cont3"></div>
-</form>
+        <div id="cont3"></div>
+    </form>
     <script>
-      
-        
+
+
         var turn = 10;
         var y = Math.floor(Math.random() * 100 + 1);
-        function result(){
-    if(turn>0){
-        var x = document.getElementById('guess').value;
-        if(x>y){
-            document.getElementById('display').innerHTML = "OHHH :( TRY Smaller";
-            turn--;
-            document.getElementById('dis').innerHTML = "Turn Left " +turn; 
+        function result() {
+            if (turn > 0) {
+                var x = document.getElementById('guess').value;
+                if (x > y) {
+                    document.getElementById('display').innerHTML = "OHHH :( TRY Smaller";
+                    turn--;
+                    document.getElementById('dis').innerHTML = "Turn Left " + turn;
+                }
+                else if (x < y) {
+                    document.getElementById('display').innerHTML = "OHHH :( TRY Larger";
+                    turn--;
+                    document.getElementById('dis').innerHTML = "Turn Left " + turn;
+                }
+                else {
+                    document.getElementById('display').innerHTML = "YOU WON :)";
+                    document.getElementById('dis').innerHTML = "Turn Left " + turn;
+                    document.getElementById('cont3').innerHTML = "<span style='color: green;'>YOU WON THE GAME IN " + (10 - turn) + " MOVES";
+                }
+
+                document.getElementById('number').innerHTML = "Guessed Number Is " + x;
+              
+            }
+            else {
+                document.getElementById('dis').innerHTML = "<span style='color: red; font-size:45px;'>OUT OF TURN";
+                document.getElementById('display').innerHTML = "<span style='color: red;'> XXXXXXXXXXX";
+                document.getElementById('number').innerHTML = "<span style='color: red;'> XXXXXXXXXXX";
+
+            }
         }
-        else if(x<y){
-            document.getElementById('display').innerHTML = "OHHH :( TRY Larger";
-            turn--;
-            document.getElementById('dis').innerHTML = "Turn Left " +turn;
-        }
-        else{
-            document.getElementById('display').innerHTML = "YOU WON :)";
-            document.getElementById('dis').innerHTML = "Turn Left " +turn;
-            document.getElementById('cont3').innerHTML = "<span style='color: green;'>YOU WON THE GAME IN " + (10 - turn) + " MOVES";
-        }
-    
-        document.getElementById('number').innerHTML = "Guessed Number Is " +x;
         
-    }
-else{
-    document.getElementById('dis').innerHTML = "<span style='color: red; font-size:45px;'>OUT OF TURN";
-        document.getElementById('display').innerHTML = "<span style='color: red;'> XXXXXXXXXXX";
-        document.getElementById('number').innerHTML = "<span style='color: red;'> XXXXXXXXXXX";
-}}
-function reset(){
-    // document.getElementById("fm1").reset();
-    // document.getElementById("dis").innerHTML="oo";
-        
-}
-        </script>
+    </script>
 </body>
 
 </html>
